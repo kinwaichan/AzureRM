@@ -67,12 +67,11 @@ $offer = "UbuntuServer"
 $sku = "16.04.0-LTS"
 $version = "latest"
 
-$vm = New-AzureRmVMConfig -VMName $VmName -VMSize $VmSize 
-$vm = Set-AzureRmVMOperatingSystem -VM $vm -Linux -ComputerName $VmName -Credential $cred  
-$vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName $publisher -Offer $offer -Skus $sku -Version $version  
-$vm = Set-AzureRmVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -Caching ReadWrite -CreateOption fromImage  
-
-$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
+$vm = New-AzureRmVMConfig -VMName $VmName -VMSize $VmSize |
+Set-AzureRmVMOperatingSystem  -Linux -ComputerName $VmName -Credential $cred  |
+Set-AzureRmVMSourceImage  -PublisherName $publisher -Offer $offer -Skus $sku -Version $version  |
+Set-AzureRmVMOSDisk  -Name $diskName -VhdUri $osDiskUri -Caching ReadWrite -CreateOption fromImage | 
+Add-AzureRmVMNetworkInterface  -Id $nic.Id
 
  
 New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vm

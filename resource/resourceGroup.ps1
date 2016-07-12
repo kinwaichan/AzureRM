@@ -43,10 +43,21 @@ $vnet = New-AzureRmVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGr
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $ResourceGroupName -Name $VnetName
 Add-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd -VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24
 Add-AzureRmVirtualNetworkSubnetConfig -Name BackEnd  -VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
-Add-AzureRmVirtualNetworkSubnetConfig -Name ClentNetwork  -VirtualNetwork $vnet -AddressPrefix 192.168.3.0/24
+Add-AzureRmVirtualNetworkSubnetConfig -Name ClientNetwork  -VirtualNetwork $vnet -AddressPrefix 192.168.3.0/24
 
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet 
 
 
 #endregion
 
+
+#region Subnet Properties 
+
+$index = 0
+
+$vnet = Get-AzureRmVirtualNetwork -Name $VnetName  -ResourceGroupName $ResourceGroupName 
+$vnet.Subnets[$index].Id 
+$vnet.Subnets[$index].AddressPrefix
+$vnet.Subnets[$index].Name
+
+#endregion
