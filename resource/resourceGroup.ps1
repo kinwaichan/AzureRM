@@ -2,7 +2,7 @@ Login-AzureRMAccount
 
 Get-AzureRmSubscription | Format-Table
 Get-AzureRmSubscription | Out-GridView
-Get-Process | Out-GridView
+
 
 $ResourceGroupName = 'AzureRM'
 $Location = 'East US 2'

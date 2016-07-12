@@ -1,16 +1,16 @@
 Login-AzureRMAccount
-Set-Location D:\Documents\GitHub\NavigatorDataStore\azure\runbook\ub-node
+Set-Location C:\Users\sshay\Documents\GitHub\AzureRM\ub-node
 
-$ResourceGroupName = 'Navigator-Automation'
+$ResourceGroupName = 'AzureRM'
 $Location = 'East US 2'
-$VnetName = 'automation-net'
-$SubNetIndex = 0
+$VnetName = "AzureRmVNet"
+$SubNetIndex = 2
 
-$StorageAccountName = "storageautomation01"
+$StorageAccountName = "azurestoragez1"
 
 
 $i = 1
-For ($i=1; $i -lt 4; $i++) {
+For ($i=1; $i -lt 2; $i++) {
 
     $VitualMachine = @{
        ResourceGroupName = $ResourceGroupName;
@@ -18,11 +18,11 @@ For ($i=1; $i -lt 4; $i++) {
        StorageAccountName = $StorageAccountName;
        VnetName = $VnetName;  
        SubnetIndex = $SubNetIndex;
-       VmName = "swarm-node-$i";
-       NicName = "swarm-node-nic-$i"
+       VmName = "ub-client-$i";
+       NicName = "ub-client-nic-$i"
+       VmSize = "Standard_D1_v2"
        };
 
-  .  .\..\base\build-ub-docker.ps1 @VitualMachine;
+  .  .\..\base\build-ub.ps1 @VitualMachine;
 
-      
 }
