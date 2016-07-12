@@ -6,9 +6,12 @@ Get-Process | Out-GridView
 
 $ResourceGroupName = 'AzureRM'
 $Location = 'East US 2'
+$VnetName = "AzureRmVNet"
+$VNetAddressPrefix = "192.168.0.0/16"
 
 
-# Create Resource Group
+#region Create Resource Group
+
 $ResourceGroup = @{
     Name = $ResourceGroupName;
     Location = $Location;
@@ -18,26 +21,32 @@ $ResourceGroup = @{
 New-AzureRmResourceGroup @ResourceGroup;
 
 #Set ResourceGroup Properties
-Set-AzureRmResourceGroup -Name Navigator-Automation -Tag @{Name="Department";Value="IT"}
-
+Set-AzureRmResourceGroup -Name $ResourceGroupName -Tag @{Name="Department";Value="IT"}
 
 # Get Azure Resource Groups 
 Get-AzureRmresourceGroup | Select ResourceGroupName
 Get-AzureRmresourceGroup | Out-GridView
 
-$VnetName = "AzureRmVNet"
-$AddressPrefix = "10.0.1.0/24"
+
+#endregion
 
 
-#Create VNet
-$vnet = New-AzureRmVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $AddressPrefix 
+#region Create VNet
+
+$vnet = New-AzureRmVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName -Location $Location -AddressPrefix $VNetAddressPrefix
+
+#endregion
 
 
-   
+#region Create Subnets
+
+$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $ResourceGroupName -Name $VnetName
+Add-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd -VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24
+Add-AzureRmVirtualNetworkSubnetConfig -Name BackEnd  -VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
+Add-AzureRmVirtualNetworkSubnetConfig -Name ClentNetwork  -VirtualNetwork $vnet -AddressPrefix 192.168.3.0/24
+
+Set-AzureRmVirtualNetwork -VirtualNetwork $vnet 
 
 
-
-
-
-
+#endregion
 
