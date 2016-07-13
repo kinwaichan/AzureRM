@@ -17,8 +17,8 @@ For ($i=1; $i -lt 2; $i++) {
        StorageAccountName = $StorageAccountName;
        VnetName = $VnetName;
        SubnetIndex = $SubnetIndex;
-       VmName = "win-client-$i";
-       NicName = "win-client-nic-$i";
+       VmName = "win-server-$i";
+       NicName = "win-server-nic-$i";
        VmSize = "Standard_D1_v2";
        };
 
