@@ -29,3 +29,4 @@ Get-AzureRmVMImage -Location $Location -PublisherName "Canonical" -Offer "Ubuntu
 
 ## Get Image Sizes 
 Get-AzureRmVMSize –Location $Location |ft
+
