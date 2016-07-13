@@ -20,9 +20,23 @@ The Powershell Execution Policy is required to be set before adding the plugin
 ````
 ###Tools
 
-Microsoft Azure Storage Explorer    
+Microsoft Azure Storage Explorer
 http://storageexplorer.com/
 
+###Setup 
 
+####resourceGroup.ps1
+
+This Script will setup the Resource Group and Networking Foundation.
+
+
+|Resource Group |AzureRM          |
+|Network        |192.168.0.0/16   |
+
+#### Subnets 
+
+|FrontEnd         |192.168.1.0/24   |
+|BackEnd          |192.168.0.0/16   |
+|Client Network   |192.168.0.0/16   |
 
 
