@@ -2,7 +2,7 @@
 
 ###Prerequisites
 
-Windows 8.1 and Below   
+Windows 8.1 and Below    
 Windows Management Framework 5.0   
 https://www.microsoft.com/en-us/download/details.aspx?id=50395
 
@@ -35,10 +35,10 @@ This Script will setup the Resource Group and Networking Foundation.
 |Network        |192.168.0.0/16   |
 
 #### Subnets
-|   			  |   			    |
-|-----------------|-----------------|
-|FrontEnd         |192.168.1.0/24   |
-|BackEnd          |192.168.2.0/24   |
-|Client Network   |192.168.3.0/24   |
+|Subnet 		   | Network Range   | Index |
+|:-----------------|-----------------|:-----:|
+|FrontEnd          |192.168.1.0/24   |0      |
+|BackEnd           |192.168.2.0/24   |1      |
+|Client Network    |192.168.3.0/24   |2      |
 
 ####storage.ps1
