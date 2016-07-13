@@ -29,12 +29,15 @@ http://storageexplorer.com/
 
 This Script will setup the Resource Group and Networking Foundation.
 
-
+|               |                 |
+|---------------|-----------------|
 |Resource Group |AzureRM          |
 |Network        |192.168.0.0/16   |
 
-#### Subnets 
+#### Subnets
 
+|                 |                 |
+|-----------------|-----------------|
 |FrontEnd         |192.168.1.0/24   |
 |BackEnd          |192.168.0.0/16   |
 |Client Network   |192.168.0.0/16   |
