@@ -27,7 +27,8 @@ http://storageexplorer.com/
 
 ####resourceGroup.ps1
 
-This Script will setup the Resource Group and Networking Foundation.
+This Script will setup the Resource Group and Networking Foundation.   
+
 |   			|   			  |
 |---------------|-----------------|
 |Resource Group |AzureRM          |
@@ -40,4 +41,4 @@ This Script will setup the Resource Group and Networking Foundation.
 |BackEnd          |192.168.2.0/24   |
 |Client Network   |192.168.3.0/24   |
 
-
+####storage.ps1

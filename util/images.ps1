@@ -6,14 +6,18 @@ $Location = 'East US 2'
 Get-AzureRmVMImagePublisher -Location $Location | Select PublisherName | Out-GridView
 Get-AzureRmVmImageOffer -Location $Location -PublisherName 'MicrosoftVisualStudio' | Out-GridView
 Get-AzureRmVmImageSku -Location $Location -PublisherName 'MicrosoftVisualStudio' -Offer "Windows" | Out-GridView
-Get-AzureRmVMImage -Location $Location -PublisherName "MicrosoftVisualStudio" -Offer "Windows" -Skus "10-Enterprise-N" | Out-GridView
+Get-AzureRmVMImage -Location $Location -PublisherName "MicrosoftVisualStudio" -Offer "Windows" -Skus "10-Enterprise-N" | select version
 
-$Publisher = (Get-AzureRmVMImagePublisher -Location "Central US") | select -ExpandProperty PublisherName | where { $_ -like '*Microsoft*Windows*Server' }
-$Offer = (Get-AzureRmVMImageOffer -Location "Central US" -PublisherName $Publisher[0]) | select -ExpandProperty Offer | where { $_ -like '*Windows*' } 
-$Sku = (Get-AzureRmVMImageSku -Location "Central US" -PublisherName $Publisher[0] -Offer $Offer[0]) | select -ExpandProperty Skus
-$Versions = (Get-AzureRmVMImage -Location "Central US" -Offer -Offer $Offer[0] -PublisherName $Publisher[0] -Skus $Sku[0]) | select -ExpandProperty Version
-$VMImage = Get-AzureRmVMImage -Location "Central US" -Offer -Offer $Offer[0] -PublisherName $Publisher[0] -Skus $Sku[0] -Version $Versions[0]
-$VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -ImageReference $VMImage
+$Publisher = (Get-AzureRmVMImagePublisher -Location $Location) | select -ExpandProperty PublisherName | where { $_ -like '*Microsoft*Windows*Server' }
+$Offer = (Get-AzureRmVMImageOffer -Location $Location -PublisherName $Publisher[0]) | select -ExpandProperty Offer | where { $_ -like '*Windows*' } 
+$Sku = (Get-AzureRmVMImageSku -Location $Location -PublisherName $Publisher[0] -Offer $Offer[0]) | select -ExpandProperty Skus
+$Versions = (Get-AzureRmVMImage -Location $Location -Offer -Offer $Offer[0] -PublisherName $Publisher[0] -Skus $Sku[0]) | select -ExpandProperty Version
+
+
+write-output("Publisher: " + $Publisher)
+write-output("Offer:" + $Offer)
+write-output("Sku:" + $Sku )
+write-output("Current Versions" + $Versions)
 
 
 #Canonical UbuntuServer
