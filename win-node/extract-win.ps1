@@ -2,11 +2,11 @@ Login-AzureRMAccount
 
 $ResourceGroupName = 'AzureRM'
 
-$vmName = 'ub-client-1'
-$vhdNamePrefix = 'ub-16.04.0-lts-16-07-13'
+$vmName = 'win-server-1'
+$vhdNamePrefix = 'win-2012-R2-Datacenter-16-07-13'
 $path = $vhdNamePrefix + ".json"
 
-#Linux Server - Run waagent on Host
+#Windows Server - after sysprep
 Stop-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $vmName
 Set-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $vmName -Generalized
 Save-AzureRmVMImage -ResourceGroupName $ResourceGroupName -Name $vmName -DestinationContainerName "vm-images" -VHDNamePrefix $vhdNamePrefix -Path $path
