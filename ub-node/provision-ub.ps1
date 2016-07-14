@@ -1,4 +1,4 @@
-Login-AzureRMAccount
+ Login-AzureRMAccount
 Set-Location C:\Users\sshay\Documents\GitHub\AzureRM\ub-node
 
 $ResourceGroupName = 'AzureRM'
