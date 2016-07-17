@@ -70,3 +70,25 @@ In a Powershell Admin Console add the necessary DSC Modules
 Install-Module -Name xNetworking, xPSDesiredStateConfiguration, xWebAdministration
 ````
 
+### Generalize and Extract Image
+
+After you are satisfied with the Configuration of the VM, the Image can be Generalized and used as base image for building additional VM’s     
+
+Verify and test the Image 
+
+Generalize 
+
+Linux    
+````
+waagent
+````
+
+Windows     
+````
+sysprep
+````
+
+
+
+
+
