@@ -20,8 +20,11 @@ The Powershell Execution Policy is required to be set before adding the plugin
 ````
 ###Tools
 
-Microsoft Azure Storage Explorer
-http://storageexplorer.com/
+Microsoft Azure Storage Explorer   
+http://storageexplorer.com/    
+
+Multi-Tabbed PuTTY   
+http://ttyplus.com/multi-tabbed-putty/
 
 ###Setup 
 
@@ -36,7 +39,7 @@ This Script will setup the Resource Group and Networking Foundation.
 
 
 ##### Subnets
-|Subnet 		   | Network Range   | Index |
+|Subnet 		       | Network Range   | Index |
 |:-----------------|-----------------|:-----:|
 |FrontEnd          |192.168.1.0/24   |0      |
 |BackEnd           |192.168.2.0/24   |1      |
