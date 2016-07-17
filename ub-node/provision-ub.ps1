@@ -23,9 +23,9 @@ For ($i=0; $i -lt 1; $i++) {
        VmSize = "Standard_D1_v2"
        };
 
-  .  .\..\base\build-ub.ps1 @VitualMachine;
+   .  .\..\base\build-ub.ps1 @VitualMachine;
     
-        #.\extension-ub.ps1 @VitualMachine;
+   ##  .\extension-ub.ps1 @VitualMachine;
 
 }
 

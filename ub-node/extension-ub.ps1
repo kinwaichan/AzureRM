@@ -45,8 +45,10 @@ $version = '2.0'
 $fileDirectory = 'mof'
 $mofFile = 'localhost.mof'
 $fileUri = "http://$StorageAccountName.blob.core.windows.net/$fileDirectory/$mofFile";
+$storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -AccountName $StorageAccountName).Value[0]
 
-write-output("PrimaryLocation:" + $fileUri)
+write-output("File Uri:" + $fileUri)
+write-output("Primary StorageKey:" + $storageAccountKey)
 
 
 #Blob Storage Container
@@ -58,43 +60,8 @@ write-output("PrimaryLocation:" + $fileUri)
 
  $privateConfig = '{
   "StorageAccountName": $StorageAccountName,
-  "StorageAccountKey": "+lGXy5tRPD9E3hbFqqTp+6/mNhYswZeeInjlhNL0cg8JsP3ezgegtw+3OQr9DY9mjoKccv9dpDZzsSv6AKb4BA=="
+  "StorageAccountKey": $storeageKey
   }'
-
-
-
-
-
-
-
-
-
-$StorageAccount = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $StorageAccountName
-
-
-
-
-
-##write-output("PrimaryLocation:" + $StorageAccount.PrimaryEndpoints) 
-##write-output("PrimaryLocation:" + $StorageAccount) 
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #Set-AzureRmVMExtension -ResourceGroupName $ResourceGroupName -VMName $VmName -Location $Location `
