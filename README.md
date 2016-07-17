@@ -29,10 +29,11 @@ http://storageexplorer.com/
 
 This Script will setup the Resource Group and Networking Foundation.   
 
-|   			|   			  |
+|   			      |   			        |
 |---------------|-----------------|
 |Resource Group |AzureRM          |
 |Network        |192.168.0.0/16   |
+
 
 ##### Subnets
 |Subnet 		   | Network Range   | Index |
@@ -41,10 +42,10 @@ This Script will setup the Resource Group and Networking Foundation.
 |BackEnd           |192.168.2.0/24   |1      |
 |Client Network    |192.168.3.0/24   |2      |
 
-####storage.ps1
-Create the Storage Account
-Note: A Storage must be FQDN and unique in Azure
-(Update the existing account name in the script)
+####storage.ps1   
+Create the Storage Account   
+Note: A Storage must be FQDN and unique in Azure   
+(Update the existing account name in the script)        
 
 ###Creating a Base Image
 
@@ -58,5 +59,11 @@ It is recomended to create a standard base image of your OS and Applications, th
 |WindowsServer     |2012-R2-Datacenter  |
 
 
+### DSC Extentions 
 
+In a Powershell Admin Console add the necessary DSC Modules
+
+````
+Install-Module -Name xNetworking, xPSDesiredStateConfiguration, xWebAdministration
+````
 

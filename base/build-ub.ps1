@@ -74,32 +74,4 @@ Set-AzureRmVMOSDisk  -Name $diskName -VhdUri $osDiskUri -Caching ReadWrite -Crea
 Add-AzureRmVMNetworkInterface  -Id $nic.Id
 
  
-New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vm
-
-
-
-
-
-
-
-
-
-
-
-
-#$vmConfig = New-AzureRmVMConfig -VMName $VmName -VMSize $VmSize |
-
-
-
-
-
-
-#Set-AzureRmVMOperatingSystem -VM $vm -Linux  -ComputerName $VmName -Credential $cred 
-#$vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName "Canonical" `-Offer "UbuntuServer" -Skus "16.04.0-LTS" -Version "latest"
-#$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-
-#$vm = Set-AzureRmVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
-
-
-# Create VM
-#New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vm -Verbose  
+New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vm -Verbose 
