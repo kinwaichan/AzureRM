@@ -9,8 +9,8 @@ $SubNetIndex = 2
 $StorageAccountName = "azurestoragez1"
 
 
-$i = 1
-For ($i=1; $i -lt 2; $i++) {
+$i = 0
+For ($i=0; $i -lt 1; $i++) {
 
     $VitualMachine = @{
        ResourceGroupName = $ResourceGroupName;

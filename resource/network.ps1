@@ -4,7 +4,7 @@ $ResourceGroupName = 'AzureRM'
 $Location = 'East US 2'
 $VnetName = "AzureRmVNet"
 
-$i = 1;
+$i = 0;
 $IpAddressName = 'azurerm-pip-' + $i
 $DomainNameLabel = 'azurermdns'+ $i
 
@@ -13,10 +13,9 @@ $pip = New-AzureRmPublicIpAddress -Name $IpAddressName -ResourceGroupName $Resou
                                   -Location $Location -AllocationMethod Static `
                                   -DomainNameLabel $DomainNameLabel
 
- 
-# Add Public IP to Existing NIC
-$nicName = 'ub-client-nic-1'
-$pipName = 'azurerm-pip-1'
+ # Add Public IP to Existing NIC
+$nicName = 'ub-client-nic-0'
+$pipName = 'azurerm-pip-0'
 
 $pip = Get-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $ResourceGroupName 
 $nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $ResourceGroupName 
@@ -26,7 +25,7 @@ Set-AzureRmNetworkInterface -NetworkInterface $nic
 
 
 #Remove Public IP 
-Remove-AzureRmPublicIpAddress -Name "AzureRmVNet-pip-01" -ResourceGroupName $ResourceGroupName -Force
+Remove-AzureRmPublicIpAddress -Name "AzureRmVNet-pip-0" -ResourceGroupName $ResourceGroupName -Force
 
 
 
