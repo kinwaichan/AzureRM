@@ -80,12 +80,14 @@ Generalize
 
 Linux    
 ````
-waagent
+sudo waagent -deprovision+user
 ````
+
 
 Windows     
 ````
-sysprep
+  cd %windir%\system32\sysprep
+  sysprep /generalize /shutdown /oobe
 ````
 
 
