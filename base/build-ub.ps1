@@ -31,9 +31,12 @@ Param
 
     [Parameter(Mandatory=$true)]
     [String] 
-    $NicName
+    $NicName,
 
 
+    [Parameter(Mandatory=$false)]
+    [String] 
+    $BaseImage
 )
 
 # VM Credentials
@@ -61,17 +64,23 @@ $diskName = $VmName + "-os-disk"
 $osDiskUri = $storageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $diskName  + ".vhd"
 
 
-# VM
-$publisher = "Canonical"
-$offer = "UbuntuServer"
-$sku = "16.04.0-LTS"
-$version = "latest"
+$publisher = "Canonical";
+$offer = "UbuntuServer";
+$sku = "16.04.0-LTS";
+$version = "latest";
 
+
+#### Pubplisher Image
 $vm = New-AzureRmVMConfig -VMName $VmName -VMSize $VmSize |
 Set-AzureRmVMOperatingSystem  -Linux -ComputerName $VmName -Credential $cred  |
 Set-AzureRmVMSourceImage  -PublisherName $publisher -Offer $offer -Skus $sku -Version $version  |
-Set-AzureRmVMOSDisk  -Name $diskName -VhdUri $osDiskUri -Caching ReadWrite -CreateOption fromImage | 
-Add-AzureRmVMNetworkInterface  -Id $nic.Id
-
+Set-AzureRmVMOSDisk  -Name $diskName -VhdUri $osDiskUri -Caching ReadWrite -CreateOption fromImage |
+Add-AzureRmVMNetworkInterface  -Id $nic.Id;
  
+
+### VHD Images
+##Set-AzureRmVMOSDisk  -Name $diskName -VhdUri $osDiskUri -Caching ReadWrite -CreateOption fromImage -SourceImageUri $BaseImage -Linux |
+## Add-AzureRmVMNetworkInterface  -Id $nic.Id;} 
+
+
 New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vm -Verbose 
