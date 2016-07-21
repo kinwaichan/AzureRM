@@ -51,6 +51,25 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 #endregion
 
 
+#region Create Subnet Resources 
+
+
+ $SubnetPublicResource = @{
+       ResourceGroupName = $ResourceGroupName;
+       Location = $Location;
+       VnetName = $VnetName;  
+       SubnetIndex = $SubNetIndex;
+       LoadBalancerName = 'public-lb';
+       AddressPrefix = '192.168.1.0/24';
+       };
+
+   .  .\..\subnet\subnet-public.ps1 @SubnetPublicResource;
+
+
+
+#endregion
+
+
 #region Subnet Properties 
 
 $index = 0
