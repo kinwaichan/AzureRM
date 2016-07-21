@@ -60,6 +60,7 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
        VnetName = $VnetName;  
        SubnetIndex = $SubNetIndex;
        LoadBalancerName = 'public-lb';
+       AvailabilitySetName = 'public-aset'
        AddressPrefix = '192.168.1.0/24';
        };
 
